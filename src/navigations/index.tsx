@@ -9,7 +9,14 @@ const InitialNavigation = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name={'dashboard'} component={Dashboard} />
-      <Stack.Screen name={'details'} component={Details} />
+      <Stack.Group
+        screenOptions={{
+          headerShown: false,
+          animation: 'fade',
+          presentation: 'transparentModal',
+        }}>
+        <Stack.Screen name={'details'} component={Details} />
+      </Stack.Group>
     </Stack.Navigator>
   );
 };
