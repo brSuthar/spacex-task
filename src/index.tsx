@@ -9,13 +9,17 @@ import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import InitialNavigation from './navigations';
+import {Provider} from 'react-redux';
+import store from './store';
 
 function App(): React.JSX.Element {
   return (
     <View style={styles.container}>
-      <NavigationContainer>
-        <InitialNavigation />
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <InitialNavigation />
+        </NavigationContainer>
+      </Provider>
     </View>
   );
 }
