@@ -4,6 +4,7 @@ import Login from '..';
 
 import {render, fireEvent} from '@testing-library/react-native';
 import {it, expect, describe} from '@jest/globals';
+import renderer from 'react-test-renderer';
 
 describe(Login, function () {
   it('Should render user input', function () {
@@ -24,5 +25,12 @@ describe(Login, function () {
   it('Should click login', function () {
     const {getByTestId} = render(<Login />);
     fireEvent.press(getByTestId('login'));
+  });
+
+  describe('Render login', function () {
+    it('login rendered correctly', function () {
+      const tree = renderer.create(<Login />);
+      expect(tree.toJSON()).toMatchSnapshot();
+    });
   });
 });
